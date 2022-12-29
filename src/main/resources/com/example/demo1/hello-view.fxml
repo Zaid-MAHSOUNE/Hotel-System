@@ -36,7 +36,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="820.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnLogout" fitHeight="34.0" fitWidth="36.0" layoutX="820.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logout.png" />
                </image>

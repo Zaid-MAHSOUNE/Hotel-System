@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import com.example.demo1.DBConnect.DBConnectivity;
 import com.example.demo1.Modules.Room;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,11 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -24,7 +27,10 @@ import java.util.ResourceBundle;
 public class AdminHomeController implements Initializable {
     private Stage stage;
     private Scene scene;
+    private Connection connection = new DBConnectivity().getConnection();
     public static Boolean click = false;
+
+    public static int selected = -1;
     @FXML
     Button btnDashboard;
     @FXML
@@ -50,6 +56,8 @@ public class AdminHomeController implements Initializable {
     TableColumn<Room,Integer> tcRoomNo;
     @FXML
     TableColumn<Room,Integer> tcRoomOccupancy;
+    @FXML
+    Button btnLogout;
     Room room = new Room();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,7 +80,23 @@ public class AdminHomeController implements Initializable {
             cell.setGraphic(buttonBox);
             edit.setOnAction(event -> {
                 room = (Room) tvhomeView.getSelectionModel().getSelectedItem();
-                System.out.println(room.getRoomNo());
+                AdminHomeController.selected = room.getRoomNo();
+                Stage st = new Stage();
+                st.setTitle("Edit Room");
+                st.show();
+                st.setWidth(500);
+                st.setHeight(550);
+                Image icon = new Image("file:src/main/resources/images/hotel.png");
+                st.getIcons().add(icon);
+                st.setResizable(false);
+                Parent group = null;
+                try {
+                    group = FXMLLoader.load(getClass().getResource("editClient.fxml"));
+                    Scene scene = new Scene(group);
+                    st.setScene(scene);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             });
             delete.setOnAction(event -> {
                 room = (Room) tvhomeView.getSelectionModel().getSelectedItem();
@@ -99,6 +123,25 @@ public class AdminHomeController implements Initializable {
             Parent group = null;
             try {
                 group = FXMLLoader.load(getClass().getResource("adminD.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(group);
+            stage.setScene(scene);
+            stage.setWidth(912);
+            stage.setHeight(520);
+            stage.show();
+        });
+        btnLogout.setOnMouseClicked (event -> {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            Parent group = null;
+            try {
+                group = FXMLLoader.load(getClass().getResource("login.fxml"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

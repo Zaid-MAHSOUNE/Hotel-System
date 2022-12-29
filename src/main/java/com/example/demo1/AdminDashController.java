@@ -1,5 +1,6 @@
 package com.example.demo1;
 
+import com.example.demo1.DBConnect.DBConnectivity;
 import com.example.demo1.Modules.Client;
 import com.example.demo1.Modules.Room;
 import javafx.collections.ObservableList;
@@ -19,11 +20,13 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
 public class AdminDashController implements Initializable {
+    private  Connection connection = new DBConnectivity().getConnection();
     private Stage stage;
     private Scene scene;
 
@@ -53,6 +56,8 @@ public class AdminDashController implements Initializable {
     Label lbNbrAvailableRoom;
     @FXML
     TableColumn<Client,Void> tcActions;
+    @FXML
+    Button btnLogout;
     Client client = new Client();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -105,6 +110,25 @@ public class AdminDashController implements Initializable {
             Parent group = null;
             try {
                 group = FXMLLoader.load(getClass().getResource("adminH.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(group);
+            stage.setScene(scene);
+            stage.setWidth(912);
+            stage.setHeight(520);
+            stage.show();
+        });
+        btnLogout.setOnMouseClicked (event -> {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            Parent group = null;
+            try {
+                group = FXMLLoader.load(getClass().getResource("login.fxml"));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
