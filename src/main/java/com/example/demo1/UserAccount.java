@@ -104,7 +104,7 @@ public class UserAccount implements Initializable {
 
     }
     public void editall(ActionEvent e){
-        LastName.setStyle("-fx-border-color: gray;");
+        Firstname.setStyle("-fx-border-color: gray;");
         LastName.setStyle("-fx-border-color: gray;");
         Email.setStyle("-fx-border-color: gray;");
 

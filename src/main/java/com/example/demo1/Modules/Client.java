@@ -159,7 +159,7 @@ public class Client {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return true;
+        return false;
     }
     public Client GetClientInfo(String user , String pass) {
 
