@@ -74,19 +74,6 @@
                </image>
             </ImageView>
             <Pane layoutX="20.0" layoutY="205.0" prefHeight="2.0" prefWidth="131.0" style="-fx-background-color: white;" />
-            <Button layoutX="20.0" layoutY="312.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="  Account">
-               <font>
-                  <Font name="Bell MT" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="33.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/account.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
       <Pane layoutX="416.0" layoutY="54.0" prefHeight="366.0" prefWidth="2.0" style="-fx-background-color: black;" />
@@ -110,11 +97,11 @@
          <content>
             <TableView fx:id="tvhomeView" layoutX="3.0" layoutY="1.0" prefHeight="434.0" prefWidth="456.0">
               <columns>
-                <TableColumn fx:id="tcRoomNo" prefWidth="60.0" text="RoomNo" />
-                <TableColumn fx:id="tcRoomType" text="Room Type" />
-                  <TableColumn fx:id="tcRoomPrice" minWidth="0.0" text="Room Price" />
-                  <TableColumn fx:id="tcRoomOccupancy" minWidth="15.2000732421875" prefWidth="70.0" text="Occupancy" />
-                  <TableColumn fx:id="tcActions" minWidth="15.2000732421875" prefWidth="180.0" text="Actions" />
+                <TableColumn fx:id="tcRoomNo" prefWidth="80.79998475313187" text="RoomNo" />
+                <TableColumn fx:id="tcRoomType" prefWidth="82.4000244140625" text="Room Type" />
+                  <TableColumn fx:id="tcRoomPrice" minWidth="0.0" prefWidth="77.60003662109375" text="Room Price" />
+                  <TableColumn fx:id="tcRoomOccupancy" minWidth="15.2000732421875" prefWidth="93.60011291503906" text="Occupancy" />
+                  <TableColumn fx:id="tcActions" minWidth="15.2000732421875" prefWidth="136.7999267578125" text="Actions" />
               </columns>
             </TableView>
          </content>
