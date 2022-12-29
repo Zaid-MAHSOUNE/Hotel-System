@@ -53,8 +53,8 @@ public class Room {
     public int getroomname(){
         return  this.roomNo;
     }
-    public float getroomDesc(){
-        return  this.roomPrice;
+    public String getroomDesc(){
+        return  this.details;
     }
     public ObservableList getRooms() {
         ObservableList<Room> data = FXCollections.observableArrayList();

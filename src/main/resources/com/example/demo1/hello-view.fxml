@@ -28,7 +28,7 @@
                   <Image url="@../../../images/hotel.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="771.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="account" fitHeight="34.0" fitWidth="36.0" layoutX="771.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/user.png" />
                </image>

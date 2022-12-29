@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +30,8 @@ public class Register implements Initializable {
     DatePicker DateP;
     @FXML
     Label alert;
+    @FXML
+    ImageView back;
 
     private String[] itm1={"Male","Female"};
     private String[] itm2={"CNI","Passport"};
@@ -67,5 +70,20 @@ public class Register implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Gender.getItems().addAll(itm1);
         TitleT.getItems().addAll(itm2);
+
+        back.setOnMouseClicked(event -> {
+            Parent group = null;
+            try {
+                group = FXMLLoader.load(getClass().getResource("login.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(group);
+            stage.setScene(scene);
+            stage.setWidth(912);
+            stage.setHeight(530);
+            stage.show();
+        });
     }
 }

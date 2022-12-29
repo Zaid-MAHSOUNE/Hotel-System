@@ -16,6 +16,8 @@ import java.io.IOException;
 
 public class login
 {
+    static String Indice;
+    static String Indice2;
     private Stage stage;
     private Scene scene;
     @FXML
@@ -63,6 +65,8 @@ public class login
                         stage.setWidth(920);
                         stage.setHeight(525);
                         stage.show();
+                        Indice = username.getText();
+                        Indice2 = password.getText();
                 }else{
                     alert.setVisible(true);
                     alert.setText("Username Or Password Incorrect");

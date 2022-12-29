@@ -28,6 +28,7 @@ public class Client {
     private String country;
     private String pwd;
 
+
     public int getClientID() {
         return ClientID;
     }
@@ -133,7 +134,61 @@ public class Client {
         }
         return data;
     }
+    public boolean  UpdateClient(String first_Name, String last_Name, int phone_No, String _email, String _adresse, String _city, String _country,String _pwd){
+        try{
+            String sql = "UPDATE client set firstName = ?,lastName= ?,phoneNo= ?,email= ?,adresse= ?,city= ?,country= ?,pwd = ?  WHERE( email= ? AND  pwd = ? ) ";
+            PreparedStatement preparedStatementt = connection.prepareStatement(sql);
+            preparedStatementt.setString(1,first_Name);
+            preparedStatementt.setString(2,last_Name);
+            preparedStatementt.setInt(3,phone_No);
+            preparedStatementt.setString(4,_email);
+            preparedStatementt.setString(5,_adresse);
+            preparedStatementt.setString(6,_city);
+            preparedStatementt.setString(7,_country);
+            preparedStatementt.setString(8,_pwd);
+            preparedStatementt.setString(9,_email);
+            preparedStatementt.setString(10,_pwd);
+            int addr = preparedStatementt.executeUpdate();
+            if(addr>0){
+                return true;
+            }
+            else{
+                return false;
+            }
 
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return true;
+    }
+    public Client GetClientInfo(String user , String pass) {
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Client where (email = '"+user+"' AND pwd = '"+pass+"') ");
+            while (resultSet.next()) {
+                int id = resultSet.getInt("clientId");
+                String title = resultSet.getString("clientTitle");
+                String title_no = resultSet.getString("clientTitle");
+                String fname = resultSet.getString("firstName");
+                String lname = resultSet.getString("lastName");
+                Date dob = resultSet.getDate("DOB");
+                String gender = resultSet.getString("gender");
+                int phone = resultSet.getInt("phoneNo");
+                String email = resultSet.getString("email");
+                String adresse = resultSet.getString("adresse");
+                String city = resultSet.getString("city");
+                String country = resultSet.getString("country");
+                String pwd = resultSet.getString("pwd");
+               Client C4 =  new Client(id, title, title_no, fname, lname, dob, gender, phone, email, adresse, city, country,pwd);
+               return C4;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return new Client();
+    }
     public int nbrClient() throws SQLException{
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) count FROM Client");

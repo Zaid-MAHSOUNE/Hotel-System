@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -19,7 +20,8 @@ import java.util.ResourceBundle;
 public class HelloController implements Initializable {
     private Stage stage;
     private Scene scene;
-
+    @FXML
+    ImageView account ;
 
     @FXML
     VBox vbListRooms;
@@ -42,7 +44,21 @@ public class HelloController implements Initializable {
                 System.out.println(ex.getMessage());
             }
         }
-
+        account.setOnMouseClicked(event -> {
+            roomBox.index=0;
+            Parent group = null;
+            try {
+                group = FXMLLoader.load(getClass().getResource("UserInfo.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(group);
+            stage.setScene(scene);
+            stage.setWidth(912);
+            stage.setHeight(530);
+            stage.show();
+        });
     }
 
 }

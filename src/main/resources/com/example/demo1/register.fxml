@@ -14,12 +14,7 @@
 
 <AnchorPane prefHeight="497.0" prefWidth="912.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Register">
    <children>
-      <ImageView fitHeight="61.0" fitWidth="50.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/shining.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="61.0" fitWidth="50.0" layoutX="848.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="61.0" fitWidth="50.0" layoutX="837.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/shining.png" />
          </image>
@@ -55,5 +50,13 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+      <ImageView fx:id="back" fitHeight="60.0" fitWidth="56.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/undo.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>
