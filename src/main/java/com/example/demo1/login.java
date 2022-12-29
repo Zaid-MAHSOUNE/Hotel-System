@@ -32,10 +32,9 @@ public class login
         else{
             Client client = new Client();
             admin Admin = new admin();
-            boolean rst = client.CheckUser(username.getText(),password.getText());
-            if(rst==true){
-                    boolean check = Admin.CheckAdmin(username.getText(),password.getText());
-                    if(check==true){
+            boolean checkClient = client.CheckUser(username.getText(),password.getText());
+            boolean checkAdmin = Admin.CheckAdmin(username.getText(),password.getText());
+                    if(checkAdmin){
                         Parent group = null;
                         try {
                             group = FXMLLoader.load(getClass().getResource("adminH.fxml"));
@@ -50,7 +49,7 @@ public class login
                         stage.setHeight(525);
                         stage.show();
                     }
-                    else {
+                    else if(checkClient){
                         Parent group = null;
                         try {
                             group = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
@@ -64,7 +63,6 @@ public class login
                         stage.setWidth(920);
                         stage.setHeight(525);
                         stage.show();
-                    }
                 }else{
                     alert.setVisible(true);
                     alert.setText("Username Or Password Incorrect");

@@ -44,7 +44,7 @@
                   <Font name="Bell MT Bold" size="17.0" />
                </font>
             </Label>
-            <Label layoutX="122.0" layoutY="-6.0" prefHeight="94.0" prefWidth="23.0" text="0" textFill="WHITE">
+            <Label fx:id="lbNbrAvailableRoom" layoutX="122.0" layoutY="-6.0" prefHeight="94.0" prefWidth="23.0" text="0" textFill="WHITE">
                <font>
                   <Font size="71.0" />
                </font>
@@ -163,7 +163,8 @@
                   <TableColumn fx:id="lname" minWidth="51.20001220703125" prefWidth="92.00006103515625" text="Last Name" />
                   <TableColumn fx:id="titletype" minWidth="62.4000244140625" prefWidth="109.59992980957031" text="Title Type" />
                   <TableColumn fx:id="titleno" minWidth="56.0" prefWidth="95.20001220703125" text="Title No." />
-                  <TableColumn fx:id="mail" minWidth="63.20001220703125" prefWidth="224.79998779296875" text="Email" />
+                  <TableColumn fx:id="mail" maxWidth="60.0" minWidth="50.0" prefWidth="224.79998779296875" text="Email" />
+                  <TableColumn fx:id="tcActions" maxWidth="160.0" minWidth="50.0" prefWidth="224.79998779296875" text="Actions" />
                </columns>
             </TableView>
          </content>

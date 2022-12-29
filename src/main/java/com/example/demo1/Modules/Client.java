@@ -9,6 +9,10 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Client {
+    public Connection getConnection() {
+        return connection;
+    }
+
     private Connection connection;
     private int ClientID;
     private String clientTitle;
@@ -138,7 +142,7 @@ public class Client {
         return nbrClient;
     }
 
-    public ObservableList getClientsId() {
+    public ObservableList get_Clients() {
         ObservableList<Client> data = FXCollections.observableArrayList();
         try {
             Statement statement = connection.createStatement();
@@ -160,11 +164,13 @@ public class Client {
     }
     public boolean  CheckUser(String email,String Pass){
         try{
-            String sql = "SELECT * FROM client WHERE (email = ? AND pwd = ?)";
+            String sql = "SELECT COUNT(*) count FROM client WHERE (email = ? AND pwd = ?)";
             PreparedStatement preparedStatementt = connection.prepareStatement(sql);
             preparedStatementt.setString(1,email);
             preparedStatementt.setString(2,Pass);
-            int addr = preparedStatementt.executeUpdate();
+            ResultSet resultSet = preparedStatementt.executeQuery();
+            resultSet.next();
+            int addr = resultSet.getInt("count");
             if(addr > 0){
                 return true;
             }
@@ -219,6 +225,13 @@ public class Client {
 
     public void setClientTitle(String clientTitle) {
         this.clientTitle = clientTitle;
+    }
+
+    public void deleteClient(int id) throws  SQLException{
+        String sql = "DELETE FROM `client` WHERE clientId = ?";
+        PreparedStatement preparedStatementt = connection.prepareStatement(sql);
+        preparedStatementt.setInt(1,id);
+        preparedStatementt.executeUpdate();
     }
 
     public String getClientTitleNo() {

@@ -108,12 +108,13 @@
       </Button>
       <ScrollPane layoutX="439.0" layoutY="21.0">
          <content>
-            <TableView fx:id="homeview" layoutX="3.0" layoutY="1.0" prefHeight="434.0" prefWidth="456.0">
+            <TableView fx:id="tvhomeView" layoutX="3.0" layoutY="1.0" prefHeight="434.0" prefWidth="456.0">
               <columns>
-                <TableColumn fx:id="roomn" prefWidth="110.40008240938187" text="RoomNo" />
-                <TableColumn fx:id="roomt" prefWidth="93.5999755859375" text="Room Type" />
-                  <TableColumn fx:id="roomp" minWidth="0.0" prefWidth="135.19996643066406" text="Room Price" />
-                  <TableColumn fx:id="roomo" minWidth="15.2000732421875" prefWidth="111.199951171875" text="Occupancy" />
+                <TableColumn fx:id="tcRoomNo" prefWidth="60.0" text="RoomNo" />
+                <TableColumn fx:id="tcRoomType" text="Room Type" />
+                  <TableColumn fx:id="tcRoomPrice" minWidth="0.0" text="Room Price" />
+                  <TableColumn fx:id="tcRoomOccupancy" minWidth="15.2000732421875" prefWidth="70.0" text="Occupancy" />
+                  <TableColumn fx:id="tcActions" minWidth="15.2000732421875" prefWidth="180.0" text="Actions" />
               </columns>
             </TableView>
          </content>

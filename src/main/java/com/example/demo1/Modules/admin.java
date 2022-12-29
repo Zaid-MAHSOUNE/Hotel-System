@@ -74,11 +74,13 @@ public class admin {
     }
     public boolean  CheckAdmin(String email,String Pass){
         try{
-            String sql = "SELECT * FROM admin WHERE (email = ? AND pwd = ?) LIMIT 1";
+            String sql = "SELECT COUNT(*) count FROM admin WHERE (email = ? AND pwd = ?) LIMIT 1";
             PreparedStatement preparedStatementt = connection.prepareStatement(sql);
             preparedStatementt.setString(1,email);
             preparedStatementt.setString(2,Pass);
-            int addr = preparedStatementt.executeUpdate();
+            ResultSet resultSet = preparedStatementt.executeQuery();
+            resultSet.next();
+            int addr = resultSet.getInt("count");
             if(addr > 0){
                 return true;
             }

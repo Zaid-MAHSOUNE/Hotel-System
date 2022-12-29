@@ -31,7 +31,6 @@ public class HelloController implements Initializable {
         Node[] nodes = new Node[list.size()];
         for (int i = 0; i < nodes.length; i++) {
             try {
-
                 if (vbListRooms != null) {
                     nodes[i] = (Node) FXMLLoader.load(getClass().getResource("ItemDesign.fxml"));
                     vbListRooms.setSpacing(15);

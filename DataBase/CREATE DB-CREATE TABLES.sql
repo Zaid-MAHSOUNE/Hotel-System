@@ -11,7 +11,7 @@ CREATE TABLE Room (
 );
 
 CREATE TABLE Booking (
-	bookingId INT,
+	bookingId INT AUTO_INCREMENT,
     clientId INT,
     roomNo INT,
     arrivalDate DATE, 
@@ -22,7 +22,7 @@ CREATE TABLE Booking (
 );
 
 CREATE TABLE Bill (
-	invoiceNo INT,
+	invoiceNo INT AUTO_INCREMENT,
     bookingId INT,
     clientId INT,
 	paymentDate DATE,
@@ -33,7 +33,7 @@ CREATE TABLE Bill (
 ); 
 
 CREATE TABLE Client (
-	clientId INT,
+	clientId INT AUTO_INCREMENT,
     bookingId INT,
     clientTitle VARCHAR(20),
     clientTitleNo VARCHAR(50),
