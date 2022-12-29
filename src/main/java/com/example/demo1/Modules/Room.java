@@ -166,7 +166,7 @@ public class Room {
     }
 
     public void deleteRoom(int id) throws  SQLException{
-        String sql = "DELETE FROM `room` WHERE clientId = ?";
+        String sql = "DELETE FROM `room` WHERE roomNo = ?";
         PreparedStatement preparedStatementt = connection.prepareStatement(sql);
         preparedStatementt.setInt(1,id);
         preparedStatementt.executeUpdate();

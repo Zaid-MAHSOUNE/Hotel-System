@@ -33,7 +33,7 @@
          </children>
       </Pane>
       <CheckBox layoutX="98.0" layoutY="400.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="303.0" text=" im sure that i want to ...." />
-      <Button layoutX="159.0" layoutY="445.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="182.0" style="-fx-background-color: skyblue;" text="Continue" textFill="WHITE">
+      <Button fx:id="btnContinue" layoutX="159.0" layoutY="445.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="182.0" style="-fx-background-color: skyblue;" text="Continue" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

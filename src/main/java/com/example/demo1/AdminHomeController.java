@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 public class AdminHomeController implements Initializable {
     private Stage stage;
     private Scene scene;
+    public static Boolean click = false;
     @FXML
     Button btnDashboard;
     @FXML
@@ -52,6 +53,7 @@ public class AdminHomeController implements Initializable {
     Room room = new Room();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (!AdminHomeController.click)
         choose.getItems().addAll(itm);
         try {
             tvhomeView.setMaxHeight(26 + (room.nbrRooms()*30));
@@ -89,10 +91,11 @@ public class AdminHomeController implements Initializable {
 
         populateRoomTableView(tvhomeView,data);
 
-
+        AdminHomeController.click = true;
 
 
         btnDashboard.setOnMouseClicked(event -> {
+            AdminHomeController.click = false;
             Parent group = null;
             try {
                 group = FXMLLoader.load(getClass().getResource("adminD.fxml"));
@@ -109,7 +112,7 @@ public class AdminHomeController implements Initializable {
     }
     public void populateRoomTableView(TableView tv,ObservableList<Room> data){
         tcRoomNo.setCellValueFactory(new PropertyValueFactory<Room,Integer>("roomNo"));
-        tcRoomType.setCellValueFactory(new PropertyValueFactory<Room,String>("roomtype"));
+        tcRoomType.setCellValueFactory(new PropertyValueFactory<Room,String>("roomType"));
         tcRoomPrice.setCellValueFactory(new PropertyValueFactory<Room,Float>("roomPrice"));
         tcRoomOccupancy.setCellValueFactory(new PropertyValueFactory<Room,Integer>("occupancy"));
         tv.setItems(data);
@@ -129,6 +132,7 @@ public class AdminHomeController implements Initializable {
         else{
             boolean rst= room.addRoom(Integer.valueOf(txtid.getText()),choose.getValue(),Float.valueOf(txtprice.getText()),DESCRIPTION.getText());
             if(rst==true){
+                initialize(null,null);
                 alert.setVisible(true);
                 alert.setText("YOU ADDED A ROOM");
                 alert.setStyle("-fx-background-color: #90EE90;");

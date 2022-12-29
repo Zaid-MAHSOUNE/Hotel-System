@@ -78,7 +78,6 @@ public class AdminDashController implements Initializable {
             });
             delete.setOnAction(event -> {
                 client = (Client) tvClients.getSelectionModel().getSelectedItem();
-                System.out.println(client.getClientID());
                 try {
                     client.deleteClient(client.getClientID());
                     initialize(null, null);
